@@ -1,27 +1,29 @@
 package com.adminportal.controller;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- * Created by Pc on 8/13/2017.
- */
+import java.util.List;
+
+
 @Controller
 public class HomeController {
 
     @RequestMapping("/")
-    public String index(){
+    public String index() {
         return "redirect:home";
     }
 
     @RequestMapping("/home")
-    public String home(){
+    public String home() {
         return "home";
     }
 
     @RequestMapping("/login")
-    public String login(){
+    public String login() {
         return "login";
     }
-
 }
+
+

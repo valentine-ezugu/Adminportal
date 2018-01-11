@@ -41,6 +41,16 @@ public class Book {
     @JsonIgnore
     private List<BookToCartItem> bookToCartItemList;
 
+    @Transient
+    private List<Book> bookList;
+
+    public List<Book> getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(List<Book> bookList) {
+        this.bookList = bookList;
+    }
 
     public Long getId() {
         return id;

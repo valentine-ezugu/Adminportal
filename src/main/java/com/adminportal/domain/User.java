@@ -14,11 +14,11 @@ import java.util.Set;
 
 
 @Entity
-public class User  implements UserDetails{
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name ="id",nullable =false,updatable= false)
+    @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
     private String username;
@@ -29,21 +29,21 @@ public class User  implements UserDetails{
 
     private String lastname;
 
-    @Column(name = "email",nullable =false,updatable= false)
+    @Column(name = "email", nullable = false, updatable = false)
     private String email;
 
     private String phone;
 
     private boolean enabled = true;
 
-    @OneToOne(cascade = CascadeType.ALL,mappedBy = "user")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
     private ShoppingCart shoppingCart;
 
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     List<UserShipping> userShippingList;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     List<UserPayment> userPaymentList;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -63,6 +63,7 @@ public class User  implements UserDetails{
 
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -72,7 +73,7 @@ public class User  implements UserDetails{
     }
 
     public void setUsername(String username) {
-         this.username = username;
+        this.username = username;
     }
 
     public String getPassword() {
@@ -146,7 +147,7 @@ public class User  implements UserDetails{
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<GrantedAuthority> authorities = new HashSet<>();
-        userRoles.forEach(ur ->authorities.add(new Authority(ur.getRole().getName())) );
+        userRoles.forEach(ur -> authorities.add(new Authority(ur.getRole().getName())));
 
         return authorities;
     }
@@ -155,6 +156,7 @@ public class User  implements UserDetails{
     public boolean isAccountNonExpired() {
         return true;
     }
+
     @Override
     public boolean isAccountNonLocked() {
         return true;
@@ -164,6 +166,7 @@ public class User  implements UserDetails{
     public boolean isCredentialsNonExpired() {
         return true;
     }
+
     //if not enabled we cant log in
     public boolean isEnabled() {
         return enabled;

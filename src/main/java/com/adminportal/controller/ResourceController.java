@@ -1,15 +1,13 @@
 package com.adminportal.controller;
 
-import com.adminportal.service.impl.BookService;
+import com.adminportal.service.api.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
-/**
- * Created by Pc on 9/24/2017.
- */
+
 @RestController
 public class ResourceController {
 
@@ -25,7 +23,7 @@ public class ResourceController {
             String bookId =id.substring(8);
             bookService.removeOne(Long.parseLong(bookId));
         }
-
+        
         return "delete success";
     }
 }

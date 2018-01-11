@@ -1,6 +1,5 @@
 package com.adminportal.utility;
 
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -15,7 +14,6 @@ public class SecurityUtility {
     @Bean
     public static BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(12, new SecureRandom(SALT.getBytes()));
-
     }
 
     @Bean
@@ -31,6 +29,5 @@ public class SecurityUtility {
         String saltStr = salt.toString();
         return saltStr;
         }
-
-    }
+  }
 

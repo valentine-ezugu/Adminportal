@@ -4,26 +4,25 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-//the role persists the database
 @Entity
 public class Role {
 
     @Id
-    private int Roleid;
+    private int roleId;
 
     private String name;
 
     //Using set because it has no duplicate value
-//one role can have multiple user
-    @OneToMany(mappedBy = "role",cascade= CascadeType.ALL, fetch = FetchType.LAZY)
-   private Set<UserRole>  userRoles = new HashSet<>();
+    //one role can have multiple user
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<UserRole> userRoles = new HashSet<>();
 
-    public int getRoleid() {
-        return Roleid;
+    public int getRoleId() {
+        return roleId;
     }
 
-    public void setRoleid(int roleid) {
-        Roleid = roleid;
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 
     public String getName() {
